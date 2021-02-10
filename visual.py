@@ -1,10 +1,12 @@
 """
 This file contains all visual classes used
 """
+import platform
+
 from PyQt5.QtWidgets import *
 
 from helpers import *
-from setup import __appname__
+from setup import __appname__, __version__, __author__, __author_email__
 
 
 class MainWindow(QMainWindow):
@@ -39,7 +41,31 @@ class MainWindow(QMainWindow):
         self.setCentralWidget(calculator)
 
     def about_function(self):
-        pass
+        about = """
+                        <p><b>{0}</b></p>
+                        <p><b>Versión: {1}</b></p>
+                        <p><b>Autor: {2}</b></p>
+                        <p><b>Email: {3}</b></p>
+                        <p>Esta aplicación calcula el precio de los VPS de Etecsa</p>
+                        <p>Esta versión se ejecuta en {4}</p>
+                        <p><footer>&copy; 2021 {0} {1}</footer></p>
+                """.format(__appname__, __version__, __author__, __author_email__, platform.system())
+        about = AboutWindow("Acerca de {}".format(__appname__), about)
+        about.show()
+
+
+class AboutWindow:
+    def __init__(self, title, content, icon=None):
+        super(AboutWindow, self).__init__()
+        self.about = QMessageBox()
+        if icon:
+            self.icon = icon
+            self.about.setWindowIcon(icon)
+        self.title = title
+        self.content = content
+
+    def show(self):
+        QMessageBox.about(self.about, self.title, self.content)
 
 
 class CalculatorWidget(QWidget):
