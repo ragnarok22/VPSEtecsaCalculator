@@ -6,4 +6,4 @@ this program calculate the price of Etecsa's VPS
     pip install -r requirements.txt
 
 ## Compiling
-pyinstaller main.py --name "Etecsa VPS Calculator" --noconsole
+    pyinstaller main.py --name "Etecsa VPS Calculator" --noconsole
