@@ -1,3 +1,6 @@
+"""
+This file contains all visual classes used
+"""
 from PyQt5.QtWidgets import *
 
 from helpers import *
@@ -5,6 +8,9 @@ from setup import __appname__
 
 
 class MainWindow(QMainWindow):
+    """
+    The main window display
+    """
     def __init__(self, *args, **kwargs):
         super(MainWindow, self).__init__(*args, **kwargs)
         self.setWindowTitle(__appname__)
@@ -14,6 +20,9 @@ class MainWindow(QMainWindow):
 
 
 class CalculatorWidget(QWidget):
+    """
+    The CalculatorWidget calculate the prices and show you
+    """
     def __init__(self):
         super(CalculatorWidget, self).__init__()
         self.main_layout = QGridLayout(self)
@@ -52,6 +61,10 @@ class CalculatorWidget(QWidget):
         self.main_layout.addWidget(self.price_in_months, 5, 0)
 
     def calculate(self):
+        """
+        Get the value of CPU, RAM and Storage end display the prices in hours, days and monts
+        :return: null
+        """
         cpu = self.cpu_text.value()
         ram = self.ram_text.value()
         storage = self.storage_text.value()

@@ -1,3 +1,7 @@
+"""
+App info
+"""
+
 __appname__ = 'VPS Etecsa Calculator'
 __version__ = '0.1'
 __author__ = "Ragnarok"
