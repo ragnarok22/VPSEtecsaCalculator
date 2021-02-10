@@ -11,20 +11,45 @@ class MainWindow(QMainWindow):
     """
     The main window display
     """
+
     def __init__(self, *args, **kwargs):
         super(MainWindow, self).__init__(*args, **kwargs)
         self.setWindowTitle(__appname__)
         self.setFixedSize(640, 480)
+
+        # File menu
+        file_menu = QMenu('&Archivo', self)
+        exit_action = QAction('&Salir', self)
+        exit_action.triggered.connect(self.close)
+        exit_action.setStatusTip('Salir del programa')
+        exit_action.setShortcut('Ctrl+Q')
+        file_menu.addAction(exit_action)
+        self.menuBar().addMenu(file_menu)
+
+        # Help menu
+        help_menu = QMenu('&Ayuda', self)
+        about_action = QAction('&Acerca de', self)
+        about_action.triggered.connect(self.about_function)
+        about_action.setStatusTip('Acerca de este programa')
+        about_action.setShortcut('F1')
+        help_menu.addAction(about_action)
+        self.menuBar().addMenu(help_menu)
+
         calculator = CalculatorWidget()
         self.setCentralWidget(calculator)
+
+    def about_function(self):
+        pass
 
 
 class CalculatorWidget(QWidget):
     """
     The CalculatorWidget calculate the prices and show you
     """
+
     def __init__(self):
         super(CalculatorWidget, self).__init__()
+        # main layout
         self.main_layout = QGridLayout(self)
         self.setLayout(self.main_layout)
 
