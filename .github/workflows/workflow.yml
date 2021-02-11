@@ -1,9 +1,7 @@
 name: Build and test of Python Project
  
 on:
-  push:
-    branches:
-      - "master"
+  [push]
 
 jobs:
  build:
