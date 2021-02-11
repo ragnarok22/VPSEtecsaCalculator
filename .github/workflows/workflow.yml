@@ -1,0 +1,30 @@
+name: Build and test of Python Project
+ 
+on:
+  push:
+    branches:
+      - "master"
+
+jobs:
+ build:
+   runs-on: windows-latest
+ 
+   steps:
+     - uses: actions/checkout@v2
+     - name: Set up Python 3.9
+       uses: actions/setup-python@v2
+       with:
+         python-version: '3.x' # Version range or exact version of a Python version to use, using SemVer's version range syntax
+         architecture: 'x64' # optional x64 or x86. Defaults to x64 if not specified
+     - name: Install dependencies
+       run: pip3 install -r requirements.txt
+     - name: Compiling to Windows
+       run: pyinstaller main.py --name "Etecsa VPS Calculator" --noconsole --onefile
+     - name: Automatic Releases
+       uses: marvinpinto/action-automatic-releases@v1.1.0
+       with:
+         repo_token: "${{ secrets.GITHUB_TOKEN }}"
+         automatic_release_tag: "latest"
+         prerelease: false
+         files: |
+           *.exe
