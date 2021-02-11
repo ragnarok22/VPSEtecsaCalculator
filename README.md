@@ -1,4 +1,4 @@
-![build](https://github.com/actions/VPSEtecsaCalculator/workflows/.github/workflows/workflow.yml/badge.svg)
+![build](https://github.com/ragnarok22/VPSEtecsaCalculator/workflows/.github/workflows/workflow.yml/badge.svg)
 
 # VPSEtecsaCalculator
 
