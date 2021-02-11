@@ -43,3 +43,6 @@ Keywords:VPS;Etecsa;Calculator;VPSEtecsaCalculator
 Categories=Productivity
 StartupNotify=true
 EOL
+
+# compilando el paquete
+dpkg-deb --build $FOLDER

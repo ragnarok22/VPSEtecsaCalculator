@@ -53,7 +53,7 @@ jobs:
         run: pyinstaller main.py --name "Etecsa VPS Calculator" --noconsole --onefile
 
       - name: "Compiling to Linux"
-        run: ./build_linux.sh
+        run: sudo ./build_linux.sh
 
       - uses: "marvinpinto/action-automatic-releases@latest"
         with:
