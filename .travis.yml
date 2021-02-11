@@ -1,5 +1,6 @@
 language: python
+python:
+  - 3.8
 rvm:
-  - 3.9
   - pyqt5
   - pyinstaller
