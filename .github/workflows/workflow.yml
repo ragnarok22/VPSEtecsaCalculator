@@ -44,14 +44,14 @@ jobs:
         run: pyinstaller main.py --name "Etecsa VPS Calculator" --noconsole --onefile
 
       - uses: "marvinpinto/action-automatic-releases@latest"
-          with:
-            repo_token: "${{ secrets.GITHUB_TOKEN }}"
-            automatic_release_tag: "latest"
-            prerelease: true
-            title: "Latest version"
-            files: |
-              LICENSE
-              *.exe
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          automatic_release_tag: "latest"
+          prerelease: true
+          title: "Latest version"
+          files: |
+            LICENSE
+            *.exe
 
 #
 #  build:
