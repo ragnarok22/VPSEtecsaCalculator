@@ -11,7 +11,7 @@ jobs:
     runs-on: windows-latest
 
     steps:
-      - name: "Set up pPython 3.9"
+      - name: "Set up Python 3.9"
         uses: actions/setup-python@v2
         with:
           python-version: '3.x'
@@ -39,7 +39,7 @@ jobs:
     runs-on: ubuntu-20.04
 
     steps:
-      - name: "Set up pPython 3.9"
+      - name: "Set up Python 3.9"
         uses: actions/setup-python@v2
         with:
           python-version: '3.x'

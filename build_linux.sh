@@ -1,4 +1,4 @@
-#!/usr/bin/env bash
+#!/bin/bash
 
 PACKAGE_NAME="VPSEtecsaCalculator"
 VERSION="0.1"
