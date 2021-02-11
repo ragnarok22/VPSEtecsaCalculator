@@ -34,7 +34,7 @@ cat > debian/rules <<EOL
 #!/usr/bin/make -f
 
 %:
-        dh $@ --with python-virtualenv --python /usr/bin/python3.8
+        dh \$@ --with python-virtualenv --python /usr/bin/python3.8
 EOL
 
 debuild -b -us -uc
