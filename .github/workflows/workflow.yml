@@ -24,7 +24,33 @@ jobs:
           files: |
             LICENSE
             *.exe
-#
+
+  build:
+    name: "Build"
+    runs-on: windows-latest
+
+    steps:
+      - name: "Set u pPython 3.9"
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+          architecture: 'x64'
+
+      - name: "Install dependencies"
+        run: pip3 install -r requirements.txt
+
+      - name: "Compiling to Windows"
+        run: pyinstaller main.py --name "Etecsa VPS Calculator" --noconsole --onefile
+
+      - name: "Automatic Releases"
+        uses: marvinpinto/action-automatic-releases@v1.1.0
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          files: |
+            LICENSE
+            *.exe
+
+
 #
 #  build:
 #   runs-on: windows-latest
