@@ -51,7 +51,7 @@ jobs:
           title: "Latest version"
           files: |
             LICENSE
-            *.exe
+            dist/*.exe
 
 #
 #  build:
