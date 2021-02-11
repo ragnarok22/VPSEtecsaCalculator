@@ -7,30 +7,39 @@ on:
 
 jobs:
   pre-release:
-    name: "Pre release"
+    name: "Pre Release"
     runs-on: windows-latest
 
     steps:
-      - name: "Build & test"
-        run: |
-          echo "done!"
+      - name: "Set up pPython 3.9"
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+          architecture: 'x64'
+
+      - uses: actions/checkout@v2
+      - name: "Install dependencies"
+        run: pip3 install -r requirements.txt
+
+      - name: "Compiling to Windows"
+        run: pyinstaller main.py --name "Etecsa VPS Calculator" --onefile
 
       - uses: "marvinpinto/action-automatic-releases@latest"
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          automatic_release_tag: "latest"
+          automatic_release_tag: "pre-release"
           prerelease: true
-          title: "Development Build"
+          title: "Pre release version"
           files: |
             LICENSE
-            *.exe
+            dist/*.exe
 
   build:
     name: "Build"
     runs-on: windows-latest
 
     steps:
-      - name: "Set u pPython 3.9"
+      - name: "Set up pPython 3.9"
         uses: actions/setup-python@v2
         with:
           python-version: '3.x'
@@ -47,7 +56,7 @@ jobs:
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
           automatic_release_tag: "latest"
-          prerelease: true
+          prerelease: false
           title: "Latest version"
           files: |
             LICENSE
