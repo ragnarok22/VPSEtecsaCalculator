@@ -1,3 +1,5 @@
+#!/usr/bin/env bash
+
 PACKAGE_NAME="VPSEtecsaCalculator"
 VERSION="0.1"
 MAINTAINER="Reinier Hernández"
