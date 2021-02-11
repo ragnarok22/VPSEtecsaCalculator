@@ -20,26 +20,26 @@ mkdir $FOLDER/usr/share/applications
 touch $FOLDER/DEBIAN/control
 touch $FOLDER/usr/share/applications/$PACKAGE_NAME.desktop
 
-cat > $FOLDER/debian/control <<EOL
-Package: $PACKAGE_NAME
-Version: $VERSION
+cat >$FOLDER/debian/control <<EOL
+Package: {PACKAGE_NAME}
+Version: {VERSION}
 Section: python3
 Priority: extra
 Architecture: any
-Maintainer: $MAINTAINER <$MAINTAINER_EMAIL>
+Maintainer: {MAINTAINER} <{MAINTAINER_EMAIL}>
 Description: Calculadora de los precios de los VPS de Etecsa
 EOL
 
-cat > $FOLDER/usr/share/applications/$PACKAGE_NAME.desktop <<EOL
+cat >$FOLDER/usr/share/applications/$PACKAGE_NAME.desktop <<EOL
 [Desktop Entry]
-Version: $VERSION
+Version: {VERSION}
 Type: Application
-Name: $PACKAGE_NAME
+Name: {PACKAGE_NAME}
 GenericName: VPS Etecsa Calculator
 Comment: Calculadora de los precios de los VPS de Etecsa
-Exec=/usr/local/bin/$PACKAGE_NAME
+Exec=/usr/local/bin/{PACKAGE_NAME}
 Terminal: false
-Keywords:VPS;Etecsa;Calculator;VPSEtecsaCalculator
+Keywords:VPS;Etecsa;Calculator;{PACKAGE_NAME}
 Categories=Productivity
 StartupNotify=true
 EOL
