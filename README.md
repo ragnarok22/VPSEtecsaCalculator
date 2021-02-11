@@ -1,3 +1,5 @@
+![build](https://github.com/actions/VPSEtecsaCalculator/workflows/.github/workflows/workflow.yml/badge.svg)
+
 # VPSEtecsaCalculator
 
 this program calculate the price of Etecsa's VPS
