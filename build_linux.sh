@@ -5,7 +5,7 @@ VERSION="0.1"
 MAINTAINER="Reinier Hernández"
 MAINTAINER_EMAIL="sasuke.reinier@gmail.com"
 
-FOLDER=${PACKAGE_NAME}_{VERSION}-debian
+FOLDER={PACKAGE_NAME}_{VERSION}-debian
 
 # Creando las carpetas necesarias
 mkdir $FOLDER
