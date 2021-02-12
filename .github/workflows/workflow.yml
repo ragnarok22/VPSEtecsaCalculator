@@ -1,13 +1,13 @@
-name: Build and test
+name: "tagged-release"
  
 on:
   push:
-    branches:
-      - "main"
+    tags:
+      - "v*"
 
 jobs:
-  build:
-    name: "Build executables"
+  tagged-release:
+    name: "Tagged Release"
     runs-on: ubuntu-20.04
 
     steps:
@@ -30,9 +30,7 @@ jobs:
       - uses: "marvinpinto/action-automatic-releases@latest"
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          automatic_release_tag: "latest"
           prerelease: false
-          title: "Latest version"
           files: |
             LICENSE
             dist/*.exe
