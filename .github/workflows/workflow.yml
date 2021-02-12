@@ -6,34 +6,6 @@ on:
       - "main"
 
 jobs:
-  pre-release:
-    name: "Pre Release"
-    runs-on: windows-latest
-
-    steps:
-      - name: "Set up Python 3.9"
-        uses: actions/setup-python@v2
-        with:
-          python-version: '3.x'
-          architecture: 'x64'
-
-      - uses: actions/checkout@v2
-      - name: "Install dependencies"
-        run: pip3 install -r requirements.txt
-
-      - name: "Compiling to Windows"
-        run: pyinstaller main.py --name "Etecsa VPS Calculator" --onefile
-
-      - uses: "marvinpinto/action-automatic-releases@latest"
-        with:
-          repo_token: "${{ secrets.GITHUB_TOKEN }}"
-          automatic_release_tag: "pre-release"
-          prerelease: true
-          title: "Pre release version"
-          files: |
-            LICENSE
-            dist/*.exe
-
   build:
     name: "Build executables"
     runs-on: ubuntu-20.04
