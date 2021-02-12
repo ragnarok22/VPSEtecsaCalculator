@@ -46,5 +46,9 @@ StartupNotify=true
 EOL
 cat $FOLDER/usr/share/applications/$PACKAGE_NAME.desktop
 
+# Generando ejecutable
+pyinstaller main.py --name "${PACKAGE_NAME}" --noconsole --onefile
+cp dist/$PACKAGE_NAME $FOLDER/usr/local/bin/
+
 # compilando el paquete
 dpkg-deb --build $FOLDER
