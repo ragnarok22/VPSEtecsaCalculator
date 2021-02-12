@@ -1,7 +1,7 @@
 #!/bin/bash
 
 PACKAGE_NAME="VPSEtecsaCalculator"
-VERSION="0.1"
+VERSION="1.0"
 MAINTAINER="Reinier Hernández"
 MAINTAINER_EMAIL="sasuke.reinier@gmail.com"
 
