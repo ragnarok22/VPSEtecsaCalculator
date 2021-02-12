@@ -20,7 +20,7 @@ mkdir $FOLDER/usr/share/applications
 touch $FOLDER/DEBIAN/control
 touch $FOLDER/usr/share/applications/$PACKAGE_NAME.desktop
 
-cat >$FOLDER/debian/control <<EOL
+cat >$FOLDER/DEBIAN/control <<EOL
 Package: {PACKAGE_NAME}
 Version: {VERSION}
 Section: python3
@@ -29,7 +29,7 @@ Architecture: any
 Maintainer: {MAINTAINER} <{MAINTAINER_EMAIL}>
 Description: Calculadora de los precios de los VPS de Etecsa
 EOL
-cat $FOLDER/debian/control
+cat $FOLDER/DEBIAN/control
 
 cat >$FOLDER/usr/share/applications/$PACKAGE_NAME.desktop <<EOL
 [Desktop Entry]
