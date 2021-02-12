@@ -29,6 +29,7 @@ Architecture: any
 Maintainer: {MAINTAINER} <{MAINTAINER_EMAIL}>
 Description: Calculadora de los precios de los VPS de Etecsa
 EOL
+cat $FOLDER/debian/control
 
 cat >$FOLDER/usr/share/applications/$PACKAGE_NAME.desktop <<EOL
 [Desktop Entry]
@@ -43,6 +44,7 @@ Keywords:VPS;Etecsa;Calculator;{PACKAGE_NAME}
 Categories=Productivity
 StartupNotify=true
 EOL
+cat $FOLDER/usr/share/applications/$PACKAGE_NAME.desktop
 
 # compilando el paquete
 dpkg-deb --build $FOLDER
