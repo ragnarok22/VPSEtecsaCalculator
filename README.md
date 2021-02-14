@@ -1,4 +1,4 @@
-![build](https://github.com/ragnarok22/VPSEtecsaCalculator/workflows/tagged-release/badge.svg)
+![build](https://github.com/ragnarok22/VPSEtecsaCalculator/workflows/Build/badge.svg)
 
 # VPSEtecsaCalculator
 

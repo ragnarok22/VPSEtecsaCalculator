@@ -23,7 +23,9 @@ jobs:
         run: pip3 install -r requirements.txt
 
       - name: Compiling to Windows
-        run: pyinstaller main.py --name "EtecsaVPSCalculator" --noconsole --onefile
+        run: |
+          pyinstaller main.py --name "EtecsaVPSCalculator" --noconsole --onefile
+          ls ./dist/
 
       - name: Compiling to Linux
         run: bash build_linux.sh
