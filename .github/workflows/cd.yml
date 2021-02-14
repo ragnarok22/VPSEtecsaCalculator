@@ -26,11 +26,6 @@ jobs:
       - name: Install dependencies
         run: pip3 install -r requirements.txt
 
-      - name: Compiling to Windows
-        run: |
-          pyinstaller main.py --name "EtecsaVPSCalculator" --noconsole --onefile
-          ls ./dist/
-
       - name: Compiling to Linux
         run: bash build_linux.sh
 
@@ -57,17 +52,6 @@ jobs:
 
       - name: imprimir cosas
         run: echo ${{ steps.create_release.outputs.upload_url }}
-
-      - name: Upload Windows Asset
-        id: upload-windows-asset
-        uses: actions/upload-release-asset@v1
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps
-          asset_path: ./dist/VPSEtecsaCalculator.exe
-          asset_name: VPS Etecsa Calculator.exe
-          asset_content_type: application/exe
 
   build-windows:
     name: Build Windows Release
