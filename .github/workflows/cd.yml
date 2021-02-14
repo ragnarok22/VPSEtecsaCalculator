@@ -7,8 +7,8 @@ on:
 name: Build
 
 jobs:
-  build:
-    name: Upload Release Asset
+  build-linux:
+    name: Build Linux Release
     runs-on: ubuntu-latest
 
     steps:
@@ -50,6 +50,48 @@ jobs:
           asset_path: ./VPSEtecsaCalculator_1.0-debian.deb
           asset_name: VPS Etecsa Calculator.deb
           asset_content_type: application/deb
+
+      - name: Upload Windows Asset
+        id: upload-windows-asset
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps
+          asset_path: ./dist/VPSEtecsaCalculator.exe
+          asset_name: VPS Etecsa Calculator.exe
+          asset_content_type: application/exe
+
+  build-windows:
+    name: Build Windows Release
+    runs-on: windows-latest
+
+    steps:
+      - name: Set up Python 3.9
+        uses: actions/setup-python@v2
+        with:
+          python-version: '3.x'
+          architecture: 'x64'
+
+      - uses: actions/checkout@v2
+      - name: Install dependencies
+        run: pip3 install -r requirements.txt
+
+      - name: Compiling to Windows
+        run: |
+          pyinstaller main.py --name "EtecsaVPSCalculator" --noconsole --onefile
+          ls ./dist/
+
+      - name: Create Release
+        id: create_release
+        uses: actions/create-release@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          tag_name: ${{ github.ref }}
+          release_name: Release ${{ github.ref }}
+          draft: false
+          prerelease: false
 
       - name: Upload Windows Asset
         id: upload-windows-asset
