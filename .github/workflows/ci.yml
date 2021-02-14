@@ -7,7 +7,7 @@ name: Tests
 
 jobs:
   testing:
-    name: Build Linux Release
+    name: Testing the app
     runs-on: ubuntu-latest
 
     steps:
