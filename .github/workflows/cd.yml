@@ -79,7 +79,7 @@ jobs:
 
       - name: Compiling to Windows
         run: |
-          pyinstaller main.py --name "EtecsaVPSCalculator" --noconsole --onefile
+          pyinstaller main.py --name "VPSEtecsaCalculator" --noconsole --onefile
           ls ./dist/
 
       - name: Create Release
