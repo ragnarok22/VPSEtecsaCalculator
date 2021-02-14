@@ -11,6 +11,10 @@ jobs:
     name: Build Linux Release
     runs-on: ubuntu-latest
 
+
+    outputs:
+      upload_url: ${{ steps.create_release.outputs.upload_url }}
+
     steps:
       - name: Set up Python 3.9
         uses: actions/setup-python@v2
@@ -68,6 +72,7 @@ jobs:
   build-windows:
     name: Build Windows Release
     runs-on: windows-latest
+    needs: build-linux
 
     steps:
       - name: Set up Python 3.9
@@ -91,7 +96,7 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          upload_url: ${{ jobs.build-linux.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps
+          upload_url: ${{ needs.build-linux.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps
           asset_path: ./dist/VPSEtecsaCalculator.exe
           asset_name: VPS Etecsa Calculator.exe
           asset_content_type: application/exe
