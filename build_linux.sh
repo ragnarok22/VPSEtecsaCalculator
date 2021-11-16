@@ -25,7 +25,7 @@ Package: ${PACKAGE_NAME}
 Version: ${VERSION}
 Section: python3
 Priority: extra
-Architecture: any
+Architecture: amd64
 Maintainer: ${MAINTAINER} <${MAINTAINER_EMAIL}>
 Description: Calculadora de los precios de los VPS de Etecsa
 EOL
